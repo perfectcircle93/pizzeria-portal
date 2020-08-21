@@ -9,6 +9,7 @@
     "start:react": "react-scripts start",
     "start-and-test": "run-p start-silent test ",
     "build": "react-scripts build",
+    "lint": "esw --watch --clear",
     "test": "react-scripts test --noStackTrace",
     "test-all": "react-scripts test --watchAll=false --noStackTrace",
     "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
@@ -24,10 +25,6 @@
       "yarn test-related --",
       "eslint"
     ]
-  },
-  
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
