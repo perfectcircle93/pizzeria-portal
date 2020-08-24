@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Homepage.module.scss';
+import styles from './HomePage.module.scss';
 
 const Homepage = () => (
   <div className={styles.component}>

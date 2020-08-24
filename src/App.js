@@ -1,7 +1,7 @@
 import React from 'react';
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Homepage from './components/views/Homepage/Homepage';
+import HomePage from './components/views/HomePage/HomePage';
 import Login from './components/views/Login/Login';
 import Tables from './components/views/Tables/Tables';
 import Booking from './components/views/Booking/Booking';
@@ -20,7 +20,7 @@ function App() {
     <Router>
       <MainLayout>
         <Switch>
-          <Route exact path={process.env.PUBLIC_URL + '/'} component={Homepage} />
+          <Route exact path={process.env.PUBLIC_URL + '/'} component={HomePage} />
           <Route exact path={process.env.PUBLIC_URL + '/login'} component={Login} />
           <Route exact path={process.env.PUBLIC_URL + '/tables'} component={Tables} />
           <Route exact path={process.env.PUBLIC_URL + '/tables/booking/:id'} component={Booking} />
