@@ -3,7 +3,7 @@ import styles from './Events.module.scss';
 
 const Events = () => (
   <div className={styles.component}>
-    <h2>Homepage view</h2>
+    <h2>Events</h2>
   </div>
 );
 
