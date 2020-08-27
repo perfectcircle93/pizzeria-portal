@@ -2,4 +2,19 @@
 
 .component {
   padding: $base-size;
+  margin: 60px auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 300px;
+  margin: 30px auto;
+}
+
+.button {
+  width: 200px;
+  height: 40px;
+  margin: 30px auto;
 }
