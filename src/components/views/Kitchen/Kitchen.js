@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { green } from '@material-ui/core/colors';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import {NavLink} from 'react-router-dom';
 
 const theme = createMuiTheme({
   palette: {
@@ -65,7 +66,7 @@ const Kitchen = () => (
           <TableRow key={row.id}>
             <TableCell>
               {row.order && (
-                <Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
+                <Button variant="contained" component={NavLink} to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
                   {row.order}
                 </Button>
               )}

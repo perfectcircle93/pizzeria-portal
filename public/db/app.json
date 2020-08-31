@@ -300,11 +300,11 @@
     }
   ],
   "tables": [
-    {"table": 1, "status": "free", "order": null},
-    {"table": 2, "status": "thinking", "order": null},
-    {"table": 3, "status": "ordered", "order": 123},
-    {"table": 4, "status": "prepared", "order": 234},
-    {"table": 5, "status": "delivered", "order": 345},
-    {"table": 6, "status": "paid", "order": 456}
+    {"table": "1", "status": "free", "order": null},
+    {"table": "2", "status": "thinking", "order": null},
+    {"table": "3", "status": "ordered", "order": 123},
+    {"table": "4", "status": "prepared", "order": 234},
+    {"table": "5", "status": "delivered", "order": 345},
+    {"table": "6", "status": "paid", "order": 456}
   ]
 }

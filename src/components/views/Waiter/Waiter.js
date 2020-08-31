@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import {NavLink} from 'react-router-dom';
 
 class Waiter extends React.Component {
   static propTypes = {
@@ -16,6 +17,8 @@ class Waiter extends React.Component {
       active: PropTypes.bool,
       error: PropTypes.oneOfType([PropTypes.bool,PropTypes.string]),
     }),
+    tables: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    fetchStatus: PropTypes.func, 
   }
 
   componentDidMount(){
@@ -23,34 +26,35 @@ class Waiter extends React.Component {
     fetchTables();
   }
 
-  renderActions(status){
+  renderActions(table, status){
+    const {fetchStatus} = this.props;
     switch (status) {
       case 'free':
         return (
           <>
-            <Button>thinking</Button>
-            <Button>new order</Button>
+            <Button onClick={() => fetchStatus(table, 'thinking')}>thinking</Button>
+            <Button color="primary" variant="contained" component={NavLink} to={`${process.env.PUBLIC_URL}/waiter/order/new`}>new order</Button>
           </>
         );
       case 'thinking':
         return (
-          <Button>new order</Button>
+          <Button color="primary" variant="contained" component={NavLink} to={`${process.env.PUBLIC_URL}/waiter/order/new`}>new order</Button>
         );
       case 'ordered':
         return (
-          <Button>prepared</Button>
+          <Button onClick={() => fetchStatus(table, 'prepared')}>prepared</Button>
         );
       case 'prepared':
         return (
-          <Button>delivered</Button>
+          <Button onClick={() => fetchStatus(table, 'delivered')}>delivered</Button>
         );
       case 'delivered':
         return (
-          <Button>paid</Button>
+          <Button onClick={() => fetchStatus(table, 'paid')}>paid</Button>
         );
       case 'paid':
         return (
-          <Button>free</Button>
+          <Button onClick={() => fetchStatus(table, 'free')}>free</Button>
         );
       default:
         return null;
@@ -102,7 +106,7 @@ class Waiter extends React.Component {
                     )}
                   </TableCell>
                   <TableCell>
-                    {this.renderActions(row.status)}
+                    {this.renderActions(row.table, row.status)}
                   </TableCell>
                 </TableRow>
               ))}
