@@ -19,7 +19,7 @@ const STATUS_UPDATE = createActionName('STATUS_UPDATE');
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
-export const statusUpdate = (table, status) => ({ table, status, type: STATUS_UPDATE });
+export const statusUpdate = payload => ({ payload, type: STATUS_UPDATE });
 
 
 /* thunk creators */
@@ -38,18 +38,15 @@ export const fetchFromAPI = () => {
   };
 };
 
-export const fetchUpdate = (table, status) => {
+export const fetchUpdate = (payload) => {
   return (dispatch) => {
     dispatch(fetchStarted());
 
     Axios
-      .put(`${api.url}/${api.tables}`)
-      .then( () => {
-        dispatch(statusUpdate(table, status));
-      })
-      .catch(err => {
-        dispatch(fetchError(err.message || true));
-      });
+      .put(`${api.url}/${api.tables}/${payload.id}`, { ...payload })
+      .then(res => {
+        dispatch(statusUpdate(res.data));
+      });  
   };
 };
 
