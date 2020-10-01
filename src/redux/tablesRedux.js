@@ -43,10 +43,10 @@ export const fetchUpdate = (payload) => {
     dispatch(fetchStarted());
 
     Axios
-      .put(`${api.url}/${api.tables}/${payload.id}`, { ...payload })
+      .put(`${api.url}/${api.tables}/${payload.id}`, {...payload})
       .then(res => {
         dispatch(statusUpdate(res.data));
-      });  
+      });
   };
 };
 
@@ -88,7 +88,7 @@ export default function reducer(statePart = [], action = {}) {
           active: false,
           error: false,
         },
-        data: statePart.data.map (order => order.table === action.table ? {...order, status: action.status} : order),
+        data: statePart.data.map (order => order.id === action.payload.id ? { ...order, status: action.payload.status} : order),
       };
     }
     default:
